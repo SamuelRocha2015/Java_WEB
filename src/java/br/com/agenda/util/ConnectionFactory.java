@@ -13,11 +13,17 @@ public class ConnectionFactory {
     public Connection getConnection() {
         Connection con = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexão estabelecida com sucesso!");
         } catch (SQLException e) {
             System.err.println("Não foi possivel estabelecer a Conexão!");
+        }catch (ClassNotFoundException e) {
+            System.err.println("Classe Não Encontrada !");
+        } catch (Exception e ){
+            System.err.println("Exception Generica!");
         }
+        
 
         return con;
     }

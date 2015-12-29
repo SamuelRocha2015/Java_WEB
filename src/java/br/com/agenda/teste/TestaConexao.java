@@ -5,6 +5,9 @@
  */
 package br.com.agenda.teste;
 
+import br.com.agenda.util.ConnectionFactory;
+import java.sql.Connection;
+
 /**
  *
  * @author Samuel
@@ -12,6 +15,13 @@ package br.com.agenda.teste;
 public class TestaConexao {
     
     public static void main(String[] args) {
+        try {
+            Connection con = new ConnectionFactory().getConnection();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         
     }
     
