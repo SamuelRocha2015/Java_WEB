@@ -83,34 +83,34 @@ import javax.servlet.http.HttpServletResponse;
  * caso não tenha passado nenhum deve retornar todos os contatos, caso contrario deve retornar apenas aquele que 
  * corresponde ao id passado no parametro
  */
-//@WebServlet("/busca")
-//public class BuscaContato extends HttpServlet{
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        ContatoDAOImpl dao = new ContatoDAOImpl();
-//        List<Contato> contatos = new ArrayList<>();
-//        Contato contato = null;
-//        //recupera o parametro informado na URI
-//        String idContato = req.getParameter("id");
-//        if ( idContato != null &&  idContato != "") {
-//            contato = dao.busca(Integer.valueOf(idContato));
-//            contatos.add(contato);
-//        } else {
-//            contatos = dao.buscaTodos();
-//        }
-//        
-//        
-//        PrintWriter writer = resp.getWriter();
-//        writer.println("<html><body>");
-//        
-//        writer.println("Resultado da Busca : </br>");
-//         writer.println("<ul>");
-//        for (Contato cont : contatos) {
-//            writer.println("<li>" + cont.getNome() + "</li>" );
-//        }
-//        writer.println("</ul>");
-//        writer.println("</body></html>");
-//    }
-//    
-//}
+@WebServlet("/busca")
+public class BuscaContato extends HttpServlet{
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ContatoDAOImpl dao = new ContatoDAOImpl();
+        List<Contato> contatos = new ArrayList<>();
+        Contato contato = null;
+        //recupera o parametro informado na URI
+        String idContato = req.getParameter("id");
+        if ( idContato != null &&  idContato != "") {
+            contato = dao.busca(Integer.valueOf(idContato));
+            contatos.add(contato);
+        } else {
+            contatos = dao.buscaTodos();
+        }
+        
+        
+        PrintWriter writer = resp.getWriter();
+        writer.println("<html><body>");
+        
+        writer.println("Resultado da Busca : </br>");
+         writer.println("<ul>");
+        for (Contato cont : contatos) {
+            writer.println("<li>" + cont.getNome() + "</li>" );
+        }
+        writer.println("</ul>");
+        writer.println("</body></html>");
+    }
+    
+}
