@@ -9,6 +9,7 @@ public class ConnectionFactory {
     private static final String url = "jdbc:mysql://localhost/agenda";
     private static final String user = "root";
     private static final String pass = "";
+    private final Util util = new Util();
 
     public Connection getConnection() {
         Connection con = null;
@@ -17,12 +18,11 @@ public class ConnectionFactory {
             con = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexão estabelecida com sucesso!");
         } catch (SQLException e) {
-            System.err.println("Não foi possivel estabelecer a Conexão!");
+            util.trataErro(util.MSG_ERRO_CONNECTION_0001, e);
         } catch (Exception e ){
-            System.err.println("Exception Generica!");
+            util.trataErro(util.MSG_ERRO_CONNECTION_0002, e);
         }
         
-
         return con;
     }
 }

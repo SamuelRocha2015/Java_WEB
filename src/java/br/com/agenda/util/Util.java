@@ -13,10 +13,8 @@ import java.text.SimpleDateFormat;
  */
 public class Util {
 
-    public static final String MSG_ERRO_DAO_0001 = " 001 - ERRO -  Erro: ";
     public static final String MSG_ERRO_CONNECTION_0001 = " 001 - Problema ao tentar criar uma nova Conexão -  Erro: ";
-    public static final String MSG_ERRO_CONNECTION_0002 = " 002 - Problema ao para encontrar a Classe -  Erro: ";
-    public static final String MSG_ERRO_CONNECTION_0003 = " 001 - Problema ao tentar criar uma nova Conexão -  Erro: ";
+    public static final String MSG_ERRO_CONNECTION_0002 = " 002 - Erro ao tentar criar uma nova Conexão -  Erro: ";
 
     public void fechaConexao(Connection con, PreparedStatement stmt, ResultSet rs) {
         try {

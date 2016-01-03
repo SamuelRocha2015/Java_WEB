@@ -15,13 +15,13 @@ public class TestaUtil {
 
     public static void main(String[] args) {
         
-        Util util = new Util();
-        try {
-            String s = null;
-            System.out.println(s.toLowerCase());
-        } catch (Exception e) {
-            util.trataErro(util.MSG_ERRO_DAO_0001, e);
-        }
+//        Util util = new Util();
+//        try {
+//            String s = null;
+//            System.out.println(s.toLowerCase());
+//        } catch (Exception e) {
+//            util.trataErro(util.MSG_ERRO_DAO_0001, e);
+//        }
         
     }
 }
