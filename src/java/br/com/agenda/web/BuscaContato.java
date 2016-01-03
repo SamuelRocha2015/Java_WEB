@@ -7,6 +7,7 @@ package br.com.agenda.web;
 
 import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
+import br.com.agenda.util.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -109,6 +110,15 @@ public class BuscaContato extends HttpServlet{
         for (Contato cont : contatos) {
             writer.println("<li>" + cont.getNome() + "</li>" );
         }
+        try {
+            String s = null;
+            s.toString();
+        } catch (Exception e) {
+            Util util = new Util();
+            util.trataErro(util.MSG_ERRO_DAO_0001, e);
+        }
+        
+        
         writer.println("</ul>");
         writer.println("</body></html>");
     }
