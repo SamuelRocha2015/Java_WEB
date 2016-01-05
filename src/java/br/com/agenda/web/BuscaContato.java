@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -101,18 +102,11 @@ public class BuscaContato extends HttpServlet{
             contatos = dao.buscaTodos();
         }
         
+        req.setAttribute("contatos", contatos);
         
-        PrintWriter writer = resp.getWriter();
-        writer.println("<html><body>");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/buscaContato.jsp");
+        dispatcher.forward(req, resp);
         
-        writer.println("Resultado da Busca : </br>");
-         writer.println("<ul>");
-        for (Contato cont : contatos) {
-            writer.println("<li>" + cont.getNome() + "</li>" );
-        }
-        
-        writer.println("</ul>");
-        writer.println("</body></html>");
     }
     
 }

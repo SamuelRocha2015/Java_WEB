@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        Contato Cadastrado com sucesso! <br />
+        Contato ${contato.nome} Cadastrado com sucesso! <br />
         <input type="button" value="voltar" name="voltar" onclick="location.href='index.html'"/>
     </body>
 </html>

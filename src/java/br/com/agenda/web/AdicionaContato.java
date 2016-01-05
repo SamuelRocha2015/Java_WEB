@@ -53,7 +53,9 @@ public class AdicionaContato extends HttpServlet {
         
         dao.insere(contato);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/sucesso.html");
+        req.setAttribute("contato", contato);
+        
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/sucesso.jsp");
         dispatcher.forward(req, resp);
     }
 
