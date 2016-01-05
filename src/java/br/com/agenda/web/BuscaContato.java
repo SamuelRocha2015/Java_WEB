@@ -88,7 +88,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BuscaContato extends HttpServlet{
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContatoDAOImpl dao = new ContatoDAOImpl();
         List<Contato> contatos = new ArrayList<>();
         Contato contato = null;

@@ -10,6 +10,7 @@ import br.com.agenda.DAO.ContatoDAO;
 import br.com.agenda.beans.Contato;
 import br.com.agenda.util.ConnectionFactory;
 import br.com.agenda.util.SQL;
+import br.com.agenda.util.Util;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +18,7 @@ import java.util.Calendar;
 public class ContatoDAOImpl implements ContatoDAO {
 
     private Connection con;
+    private final Util util = new Util();
 
     public ContatoDAOImpl() {
         this.con = new ConnectionFactory().getConnection();
@@ -25,12 +27,14 @@ public class ContatoDAOImpl implements ContatoDAO {
     @Override
     public Contato busca(Integer idContato) {
         Contato contato = new Contato();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
-            PreparedStatement stmt = con.prepareStatement(SQL.CONSULTA_CONTATO_POR_ID);    
+            stmt = con.prepareStatement(SQL.CONSULTA_CONTATO_POR_ID);    
             stmt.setInt(1, idContato);
             
             // executa um select
-            ResultSet rs = stmt.executeQuery();
+           rs = stmt.executeQuery();
             
             if (rs.next()) {
                 contato.setContatoId(rs.getInt("contato_id"));
@@ -44,12 +48,10 @@ public class ContatoDAOImpl implements ContatoDAO {
                 contato.setDataNascimento(data);
             }
 
-            rs.close();
-            stmt.close();
-            con.close();
-            
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            util.trataErro(util.MSG_ERRO_DAO_0001, e);
+        } finally {
+            util.fechaConexao(con, stmt, rs);
         }
         return contato;
     }
@@ -57,11 +59,14 @@ public class ContatoDAOImpl implements ContatoDAO {
     @Override
     public List<Contato> buscaTodos() {
         List<Contato> contatos = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
         try {
-            PreparedStatement stmt = con.prepareStatement(SQL.CONSULTA_TODOS_CONTATOS);    
+            stmt =  con.prepareStatement(SQL.CONSULTA_TODOS_CONTATOS);    
             
             // executa um select
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
 
             // itera no ResultSet
             while (rs.next()) {
@@ -79,12 +84,10 @@ public class ContatoDAOImpl implements ContatoDAO {
                 contatos.add(contato);
             }
 
-            rs.close();
-            stmt.close();
-            con.close();
-            
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            util.trataErro(util.MSG_ERRO_DAO_0002, e);
+        } finally{
+            util.fechaConexao(con, stmt, rs);
         }
         
         return contatos;
@@ -92,9 +95,10 @@ public class ContatoDAOImpl implements ContatoDAO {
 
     @Override
     public void insere(Contato contato) {
+        PreparedStatement stmt = null;
         try {
             // prepared statement para insert into
-            PreparedStatement stmt = con.prepareStatement(SQL.INSERE_CONTATO);
+            stmt = con.prepareStatement(SQL.INSERE_CONTATO);
 
             // seta os valores
             stmt.setString(1, contato.getNome());
@@ -102,29 +106,34 @@ public class ContatoDAOImpl implements ContatoDAO {
             stmt.setString(3, contato.getEndereco());
             stmt.setDate(4, new Date(contato.getDataNascimento().getTimeInMillis()));
 
-            // executa e fecha
+            // executa
             stmt.execute();
-            stmt.close();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            util.trataErro(util.MSG_ERRO_DAO_0003, e);
+        } finally {
+            //fecha as conexoes
+            util.fechaConexao(con, stmt, null);
         }
 
     }
 
     @Override
     public void remove(Integer idContato) {
+        PreparedStatement stmt = null;
         try {
             
-            PreparedStatement stmt = con.prepareStatement(SQL.REMOVE_CONTATO);
+           stmt = con.prepareStatement(SQL.REMOVE_CONTATO);
                
             stmt.setInt(1, idContato);
             
             stmt.execute();
-            stmt.close();
+       
             
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            util.trataErro(util.MSG_ERRO_DAO_0004, e);
+        } finally{
+            util.fechaConexao(con, stmt, null);
         }
 
     }
