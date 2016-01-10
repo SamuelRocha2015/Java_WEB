@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static final String url = "jdbc:mysql://localhost/agenda";
+    private static final String url = "jdbc:mysql://localhost/agenda";  
     private static final String user = "root";
     private static final String pass = "";
     private final Util util = new Util();

@@ -8,16 +8,10 @@ package br.com.agenda.web;
 import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
 import br.com.agenda.util.Util;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,13 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Samuel
  */
-@WebServlet("/adicionaContato")
-public class AdicionaContato extends HttpServlet {
+public class AdicionaContato implements Tarefa {
 
-    
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    public String executa(HttpServletRequest req, HttpServletResponse response) {
         ContatoDAOImpl dao = new ContatoDAOImpl();
         Contato contato = new Contato();
         contato.setNome(req.getParameter("nome"));
@@ -50,13 +41,11 @@ public class AdicionaContato extends HttpServlet {
         } catch (ParseException ex) {
             util.trataErro(util.MSG_ERRO_WEB_0001, ex);
         }
-        
+
         dao.insere(contato);
-        
+
         req.setAttribute("contato", contato);
-        
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/sucesso.jsp");
-        dispatcher.forward(req, resp);
+        return "/sucesso.jsp";
     }
 
 }

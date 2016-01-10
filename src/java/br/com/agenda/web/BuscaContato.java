@@ -7,15 +7,8 @@ package br.com.agenda.web;
 
 import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
-import br.com.agenda.util.Util;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -85,11 +78,10 @@ import javax.servlet.http.HttpServletResponse;
  * caso não tenha passado nenhum deve retornar todos os contatos, caso contrario deve retornar apenas aquele que 
  * corresponde ao id passado no parametro
  */
-@WebServlet("/busca")
-public class BuscaContato extends HttpServlet{
+public class BuscaContato implements Tarefa{
 
     @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String executa(HttpServletRequest req, HttpServletResponse response) {
         ContatoDAOImpl dao = new ContatoDAOImpl();
         List<Contato> contatos = new ArrayList<>();
         Contato contato = null;
@@ -104,9 +96,8 @@ public class BuscaContato extends HttpServlet{
         
         req.setAttribute("contatos", contatos);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/buscaContato.jsp");
-        dispatcher.forward(req, resp);
+        return "/buscaContato.jsp";
         
     }
-    
+
 }
