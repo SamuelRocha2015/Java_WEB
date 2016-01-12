@@ -4,9 +4,24 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/AdicionaContato.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/index.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/DAOImpl/ContatoDAOImpl.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/rodape.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/util/ConnectionFactory.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/BuscaContato.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/erroSistema.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/teste/TestaDAOImpl.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/menu.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/buscaContato.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/util/Util.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/util/SQL.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/web/sucesso.jsp</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/beans/Contato.java</file>
             <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/Tarefa.java</file>
             <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/Controller.java</file>
-            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/BuscaContato.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/web/RemoveContato.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/DAO/ContatoDAO.java</file>
+            <file>file:/F:/ProjetosJava/Agenda/src/java/br/com/agenda/util/ConstantesSistema.java</file>
         </group>
     </open-files>
 </project-private>
