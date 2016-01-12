@@ -7,6 +7,7 @@ package br.com.agenda.web;
 
 import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
+import br.com.agenda.util.ConstantesSistema;
 import br.com.agenda.util.Util;
 import java.text.ParseException;
 import java.util.Date;
@@ -39,13 +40,14 @@ public class AdicionaContato implements Tarefa {
             dataNascimento.setTime(date);
             contato.setDataNascimento(dataNascimento);
         } catch (ParseException ex) {
-            util.trataErro(util.MSG_ERRO_WEB_0001, ex);
+            util.trataErro(ConstantesSistema.MSG_ERRO_WEB_0001, ex);
         }
 
         dao.insere(contato);
 
         req.setAttribute("contato", contato);
-        return "/sucesso.jsp";
+        req.setAttribute("acao", "registrado");
+        return ConstantesSistema.JSP_SUCESSO;
     }
 
 }

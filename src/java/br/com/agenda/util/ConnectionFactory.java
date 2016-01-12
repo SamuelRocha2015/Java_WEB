@@ -18,9 +18,9 @@ public class ConnectionFactory {
             con = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexão estabelecida com sucesso!");
         } catch (SQLException e) {
-            util.trataErro(util.MSG_ERRO_CONNECTION_0001, e);
+            util.trataErro(ConstantesSistema.MSG_ERRO_CONNECTION_0001, e);
         } catch (Exception e ){
-            util.trataErro(util.MSG_ERRO_CONNECTION_0002, e);
+            util.trataErro(ConstantesSistema.MSG_ERRO_CONNECTION_0002, e);
         }
         
         return con;

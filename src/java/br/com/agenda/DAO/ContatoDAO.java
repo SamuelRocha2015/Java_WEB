@@ -11,5 +11,4 @@ public interface ContatoDAO {
 	public Contato busca (Integer idContato);
 	public List<Contato> buscaTodos();
 	
-
 }

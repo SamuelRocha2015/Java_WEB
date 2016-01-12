@@ -4,7 +4,7 @@ import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Calendar;
 
 public class TestaDAOImpl {
 

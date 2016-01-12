@@ -5,6 +5,7 @@
  */
 package br.com.agenda.beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -58,7 +59,7 @@ public class Contato {
     public void setDataNascimento(Calendar dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+        
     
     
-    
-}
+    }

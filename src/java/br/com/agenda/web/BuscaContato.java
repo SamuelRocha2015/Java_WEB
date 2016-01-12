@@ -7,6 +7,7 @@ package br.com.agenda.web;
 
 import br.com.agenda.DAOImpl.ContatoDAOImpl;
 import br.com.agenda.beans.Contato;
+import br.com.agenda.util.ConstantesSistema;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -96,7 +97,7 @@ public class BuscaContato implements Tarefa{
         
         req.setAttribute("contatos", contatos);
         
-        return "/buscaContato.jsp";
+        return ConstantesSistema.JSP_BUSCA_CONTATO;
         
     }
 

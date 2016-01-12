@@ -9,9 +9,12 @@ import java.util.List;
 import br.com.agenda.DAO.ContatoDAO;
 import br.com.agenda.beans.Contato;
 import br.com.agenda.util.ConnectionFactory;
+import br.com.agenda.util.ConstantesSistema;
 import br.com.agenda.util.SQL;
 import br.com.agenda.util.Util;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -30,18 +33,18 @@ public class ContatoDAOImpl implements ContatoDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            stmt = con.prepareStatement(SQL.CONSULTA_CONTATO_POR_ID);    
+            stmt = con.prepareStatement(SQL.CONSULTA_CONTATO_POR_ID);
             stmt.setInt(1, idContato);
-            
+
             // executa um select
-           rs = stmt.executeQuery();
-            
+            rs = stmt.executeQuery();
+
             if (rs.next()) {
                 contato.setContatoId(rs.getInt("contato_id"));
                 contato.setNome(rs.getString("nome"));
                 contato.setEmail(rs.getString("email"));
                 contato.setEndereco(rs.getString("endereco"));
-                        
+
                 // montando a data através do Calendar
                 Calendar data = Calendar.getInstance();
                 data.setTime(rs.getDate("data_nascimento"));
@@ -49,7 +52,7 @@ public class ContatoDAOImpl implements ContatoDAO {
             }
 
         } catch (SQLException e) {
-            util.trataErro(util.MSG_ERRO_DAO_0001, e);
+            util.trataErro(ConstantesSistema.MSG_ERRO_DAO_0001, e);
         } finally {
             util.fechaConexao(con, stmt, rs);
         }
@@ -61,10 +64,10 @@ public class ContatoDAOImpl implements ContatoDAO {
         List<Contato> contatos = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
+
         try {
-            stmt =  con.prepareStatement(SQL.CONSULTA_TODOS_CONTATOS);    
-            
+            stmt = con.prepareStatement(SQL.CONSULTA_TODOS_CONTATOS);
+
             // executa um select
             rs = stmt.executeQuery();
 
@@ -75,7 +78,7 @@ public class ContatoDAOImpl implements ContatoDAO {
                 contato.setNome(rs.getString("nome"));
                 contato.setEmail(rs.getString("email"));
                 contato.setEndereco(rs.getString("endereco"));
-                        
+
                 // montando a data através do Calendar
                 Calendar data = Calendar.getInstance();
                 data.setTime(rs.getDate("data_nascimento"));
@@ -85,11 +88,11 @@ public class ContatoDAOImpl implements ContatoDAO {
             }
 
         } catch (SQLException e) {
-            util.trataErro(util.MSG_ERRO_DAO_0002, e);
-        } finally{
+            util.trataErro(ConstantesSistema.MSG_ERRO_DAO_0002, e);
+        } finally {
             util.fechaConexao(con, stmt, rs);
         }
-        
+
         return contatos;
     }
 
@@ -110,7 +113,7 @@ public class ContatoDAOImpl implements ContatoDAO {
             stmt.execute();
 
         } catch (SQLException e) {
-            util.trataErro(util.MSG_ERRO_DAO_0003, e);
+            util.trataErro(ConstantesSistema.MSG_ERRO_DAO_0003, e);
         } finally {
             //fecha as conexoes
             util.fechaConexao(con, stmt, null);
@@ -122,17 +125,16 @@ public class ContatoDAOImpl implements ContatoDAO {
     public void remove(Integer idContato) {
         PreparedStatement stmt = null;
         try {
-            
-           stmt = con.prepareStatement(SQL.REMOVE_CONTATO);
-               
+
+            stmt = con.prepareStatement(SQL.REMOVE_CONTATO);
+
             stmt.setInt(1, idContato);
-            
+
             stmt.execute();
-       
-            
+
         } catch (SQLException e) {
-            util.trataErro(util.MSG_ERRO_DAO_0004, e);
-        } finally{
+            util.trataErro(ConstantesSistema.MSG_ERRO_DAO_0004, e);
+        } finally {
             util.fechaConexao(con, stmt, null);
         }
 
