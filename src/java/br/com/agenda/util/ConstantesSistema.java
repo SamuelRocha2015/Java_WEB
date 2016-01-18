@@ -23,6 +23,7 @@ public class ConstantesSistema {
     
     public static final String JSP_SUCESSO = "/sucesso.jsp";
     public static final String JSP_BUSCA_CONTATO = "/buscaContato.jsp";
+    public static final String JSP_ERRO_SISTEMA = "/erroSistema.jsp";
     
     
 }

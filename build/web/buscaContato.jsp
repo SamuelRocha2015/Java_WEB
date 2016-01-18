@@ -11,6 +11,19 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript">
+            function removeContato(id, nome) {
+                
+                var opcao = confirm('Deseja Realmente excluir este contato?');
+                if (opcao) {
+                     
+                    alert(id + " - " + nome);
+                    
+//                    location.href='/executa/RemoveContato';
+                } 
+            }
+        </script>
 
     </head>
     <body>
@@ -26,7 +39,7 @@
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Data Nascimeto</th>
-                            <th colspan="2">Ação</th>
+                            <th> Ação</th>
 
                         </tr>
                     </thead>
@@ -38,8 +51,9 @@
                                 <td>${contato.nome}</td>
                                 <td>${contato.email}</td>
                                 <td>${contato.dataNascimento.time}</td>
-                                <td> <img src="img/edit.png" width="20" height="20" alt="edit"/></td>
-                                <td> <img src="img/delete.png" width="20" height="20" alt="delete"/></td>
+                                <!--<td> <img src="img/edit.png" width="20" height="20" alt="edit" onclick="removeContato()"/></td>-->
+                                <td> <img src="img/delete.png" width="20" height="20" alt="delete" 
+                                          onclick="removeContato(${contato.contatoId}, ${contato.nome})"/></td>
                             </tr>
                         </c:forEach>
                 </table>

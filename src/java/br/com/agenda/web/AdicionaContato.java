@@ -43,7 +43,14 @@ public class AdicionaContato implements Tarefa {
             util.trataErro(ConstantesSistema.MSG_ERRO_WEB_0001, ex);
         }
 
-        dao.insere(contato);
+        try {
+            dao.insere(contato);
+        } catch (Exception e) {
+            String msg =  e.toString();
+            req.setAttribute("erroSistema", msg);
+            return ConstantesSistema.JSP_ERRO_SISTEMA;
+        }
+        
 
         req.setAttribute("contato", contato);
         req.setAttribute("acao", "registrado");
