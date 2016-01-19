@@ -13,15 +13,13 @@
         <script src="js/bootstrap.min.js"></script>
         
         <script type="text/javascript">
-            function removeContato(id, nome) {
-                
+            function exluirContato(param) {
                 var opcao = confirm('Deseja Realmente excluir este contato?');
                 if (opcao) {
-                     
-                    alert(id + " - " + nome);
-                    
-//                    location.href='/executa/RemoveContato';
-                } 
+                     window.location(param);
+                }  else {
+                     return false;
+                }
             }
         </script>
 
@@ -51,9 +49,10 @@
                                 <td>${contato.nome}</td>
                                 <td>${contato.email}</td>
                                 <td>${contato.dataNascimento.time}</td>
-                                <!--<td> <img src="img/edit.png" width="20" height="20" alt="edit" onclick="removeContato()"/></td>-->
-                                <td> <img src="img/delete.png" width="20" height="20" alt="delete" 
-                                          onclick="removeContato(${contato.contatoId}, ${contato.nome})"/></td>
+                                <td> <a href="executa?tarefa=RemoveContato&contatoId=${contato.contatoId}&nome=${contato.nome}" >
+                                        <img src="img/delete.png" width="20" height="20" alt="delete"/> 
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                 </table>
